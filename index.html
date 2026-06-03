@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAPKN — Démonstration privée pour courtiers multilogement</title>
+<meta name="description" content="Transforme une fiche Centris en analyse multilogement complète en moins de 5 minutes. Démonstration privée NAPKN.">
+
+<meta property="og:title" content="NAPKN — Démonstration privée">
+<meta property="og:description" content="Ferme les clients multilogement que tu perds aujourd'hui. Réserve ta démonstration privée.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#080A0D; --bg-elev:#0E1318; --bg-elev-2:#131922;
+    --accent:#00C97A; --accent-soft:rgba(0,201,122,.12); --accent-line:rgba(0,201,122,.30);
+    --text:#F3F5F6; --text-dim:#9AA4AD; --text-faint:#5E6872;
+    --border:rgba(255,255,255,.08); --border-strong:rgba(255,255,255,.14);
+    --mono:'JetBrains Mono',ui-monospace,monospace; --sans:'Montserrat',-apple-system,system-ui,sans-serif;
+    --maxw:560px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:84px;}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 500px at 50% -8%, rgba(0,201,122,.10), transparent 60%),radial-gradient(700px 600px at 100% 30%, rgba(0,201,122,.05), transparent 55%);}
+  body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom, #000 0%, transparent 70%);-webkit-mask-image:linear-gradient(to bottom, #000 0%, transparent 70%);}
+  .wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(8,10,13,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+  .topbar .row{max-width:var(--maxw);margin:0 auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-weight:800;letter-spacing:.14em;font-size:15px;}
+  .logo b{color:var(--accent);}
+  .brand{display:inline-flex;align-items:center;gap:8px;color:#fff;line-height:1;}
+  .brand-mark{height:22px;width:auto;display:block;flex:0 0 auto;}
+  .brand-word{font-family:var(--sans);font-weight:800;font-size:20px;letter-spacing:-.01em;color:#fff;}
+  .brand-tm{font-size:8px;font-weight:700;color:#fff;vertical-align:super;margin-left:2px;}
+  .brand--foot{justify-content:center;margin-bottom:10px;}
+  .brand--foot .brand-mark{height:26px;}
+  .brand--foot .brand-word{font-size:23px;}
+  .topcta{font-family:var(--sans);font-weight:700;font-size:13px;color:var(--bg);background:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;white-space:nowrap;}
+
+  .hero{padding:46px 0 8px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:inline-flex;align-items:center;gap:9px;}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);}
+  h1{font-size:34px;line-height:1.08;font-weight:800;letter-spacing:-.018em;margin-bottom:18px;}
+  h1 .hl{color:var(--accent);}
+  .sub{font-size:16.5px;color:var(--text-dim);line-height:1.6;margin-bottom:26px;}
+  .sub b{color:var(--text);font-weight:600;}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:16px;color:var(--bg);background:var(--accent);padding:17px 26px;border-radius:11px;text-decoration:none;width:100%;box-shadow:0 8px 30px rgba(0,201,122,.22);transition:transform .15s ease;}
+  .btn:active{transform:translateY(1px);}
+  .btn .arrow{font-family:var(--mono);}
+  .micro{font-family:var(--mono);font-size:12px;color:var(--text-faint);text-align:center;margin-top:13px;letter-spacing:.02em;}
+
+  .vsl-label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);text-align:center;margin:46px 0 14px;}
+  .video-frame{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border-strong);background:var(--bg-elev);box-shadow:0 24px 60px rgba(0,0,0,.5);}
+  .video-frame .ratio{position:relative;width:100%;padding-top:56.25%;}
+  .video-frame iframe,.video-frame video{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;background:radial-gradient(circle at 50% 42%, rgba(0,201,122,.10), transparent 60%),var(--bg-elev);}
+  .play{width:66px;height:66px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(0,201,122,.12), 0 12px 30px rgba(0,201,122,.3);}
+  .play svg{margin-left:4px;}
+  .video-placeholder .ptxt{font-family:var(--mono);font-size:12px;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;}
+
+  section{padding:50px 0;}
+  .tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+  h2{font-size:25px;font-weight:800;line-height:1.18;letter-spacing:-.01em;margin-bottom:16px;}
+  h2 .hl{color:var(--accent);}
+  p.body{color:var(--text-dim);font-size:16px;line-height:1.65;}
+  p.body + p.body{margin-top:14px;}
+  p.body b{color:var(--text);font-weight:600;}
+  .num{font-family:var(--mono);color:var(--text);font-weight:500;}
+
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;}
+  .stat{background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:18px 16px;}
+  .stat .v{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--accent);letter-spacing:-.02em;}
+  .stat .l{font-size:12.5px;color:var(--text-dim);margin-top:6px;line-height:1.4;}
+
+  .steps{display:flex;flex-direction:column;gap:14px;margin-top:28px;}
+  .step{display:flex;gap:16px;align-items:flex-start;background:var(--bg-elev);border:1px solid var(--border);border-radius:13px;padding:18px;}
+  .step .n{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);font-family:var(--mono);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;}
+  .step h3{font-size:16px;font-weight:700;margin-bottom:5px;}
+  .step p{font-size:14.5px;color:var(--text-dim);line-height:1.55;}
+  .step .out{font-family:var(--mono);font-size:12.5px;color:var(--accent);margin-top:8px;display:block;letter-spacing:.01em;line-height:1.6;}
+
+  /* Reinvestment flow chips */
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:28px;}
+  .flow .chip{font-family:var(--mono);font-size:11.5px;color:var(--text);background:var(--bg-elev);border:1px solid var(--border);border-radius:8px;padding:9px 12px;letter-spacing:.02em;}
+  .flow .chip.accent{border-color:var(--accent-line);color:var(--accent);background:var(--accent-soft);font-weight:700;}
+  .flow .ar{color:var(--text-faint);font-family:var(--mono);font-size:13px;}
+
+  .roi{margin-top:28px;border:1px solid var(--accent-line);border-radius:16px;overflow:hidden;background:linear-gradient(180deg, var(--accent-soft), transparent);}
+  .roi .line{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--border);}
+  .roi .line:last-child{border-bottom:0;}
+  .roi .k{font-size:14px;color:var(--text-dim);}
+  .roi .v{font-family:var(--mono);font-size:20px;font-weight:700;}
+  .roi .v.neg{color:var(--text);}
+  .roi .v.pos{color:var(--accent);}
+  .roi .final{background:rgba(0,201,122,.07);}
+  .roi .final .k{color:var(--text);font-weight:700;font-size:15px;}
+  .roi .final .v{font-size:30px;}
+
+  .cred{margin-top:8px;background:var(--bg-elev);border:1px solid var(--border);border-radius:16px;padding:24px;}
+  .cred .who{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .cred .avatar{width:52px;height:52px;border-radius:50%;flex:0 0 auto;background:linear-gradient(135deg,var(--accent),#0a7a4b);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;color:var(--bg);font-size:18px;}
+  .cred .who .name{font-weight:700;font-size:17px;}
+  .cred .who .role{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);letter-spacing:.04em;margin-top:2px;}
+  .cred p{font-size:15px;color:var(--text-dim);line-height:1.6;}
+
+  .guarantee{margin-top:28px;border:1.5px solid var(--accent-line);border-radius:16px;padding:26px 22px;background:var(--accent-soft);text-align:center;}
+  .guarantee .seal{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+  .guarantee h3{font-size:20px;font-weight:800;line-height:1.25;margin-bottom:12px;}
+  .guarantee p{font-size:15px;color:var(--text-dim);line-height:1.6;}
+  .guarantee p b{color:var(--text);}
+
+  .excl{border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .excl .pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-line);border-radius:100px;padding:7px 14px;margin-bottom:18px;}
+  .excl .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+
+  #reserver{scroll-margin-top:64px;}
+  .cal-shell{margin-top:22px;border:1px solid var(--border-strong);border-radius:16px;overflow:hidden;background:var(--bg-elev);}
+  .calendly-inline-widget{min-width:300px;height:760px;}
+
+  details{border:1px solid var(--border);border-radius:12px;background:var(--bg-elev);margin-bottom:12px;overflow:hidden;}
+  details summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:600;font-size:15.5px;display:flex;justify-content:space-between;align-items:center;gap:14px;}
+  details summary::-webkit-details-marker{display:none;}
+  details summary .plus{font-family:var(--mono);color:var(--accent);font-size:20px;transition:transform .2s;}
+  details[open] summary .plus{transform:rotate(45deg);}
+  details .ans{padding:0 20px 20px;color:var(--text-dim);font-size:14.5px;line-height:1.6;}
+  details .ans b{color:var(--text);}
+
+  footer{padding:40px 0 30px;text-align:center;border-top:1px solid var(--border);}
+  footer .logo{justify-content:center;display:inline-block;margin-bottom:10px;}
+  footer p{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);letter-spacing:.04em;line-height:1.7;}
+
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(8,10,13,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--border);padding:12px 22px calc(12px + env(safe-area-inset-bottom));}
+  .sticky-cta .inner{max-width:var(--maxw);margin:0 auto;}
+  .sticky-cta a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:var(--bg);font-weight:700;font-size:16px;padding:15px;border-radius:11px;text-decoration:none;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;}
+  /* Trust + risk-reversal */
+  .assure{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin-top:16px;}
+  .assure span{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);letter-spacing:.01em;display:inline-flex;align-items:center;gap:6px;}
+  .assure .ck{color:var(--accent);font-weight:700;}
+  .stars{color:var(--accent);font-size:15px;letter-spacing:2px;line-height:1;}
+  .trustbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:34px 0 4px;}
+  .trustbar .ti{background:var(--bg-elev);border:1px solid var(--border);border-radius:11px;padding:14px;display:flex;gap:11px;align-items:center;}
+  .trustbar .ti .ic{color:var(--accent);flex:0 0 auto;}
+  .trustbar .ti .tt{font-size:13px;font-weight:600;line-height:1.3;}
+  .trustbar .ti .ts{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);margin-top:2px;letter-spacing:.02em;}
+  .quote{background:var(--bg-elev);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:18px;}
+  .quote .stars{margin-bottom:13px;display:block;}
+  .quote p{font-size:16px;line-height:1.55;color:var(--text);font-weight:500;}
+  .quote .by{display:flex;align-items:center;gap:12px;margin-top:17px;}
+  .quote .by .av{width:42px;height:42px;border-radius:50%;background:var(--bg-elev-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--text-dim);flex:0 0 auto;}
+  .quote .by .nm{font-size:13.5px;font-weight:600;}
+  .quote .by .rl{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:1px;}
+  .todo{border:1px dashed var(--accent-line);background:rgba(0,201,122,.05);border-radius:10px;padding:12px 14px;margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--accent);line-height:1.55;}
+  /* Floating / sticky video */
+  .vsl-anchor{position:relative;}
+  .video-frame.is-floating{position:fixed;bottom:82px;right:16px;width:240px;max-width:62vw;margin:0;z-index:65;box-shadow:0 16px 46px rgba(0,0,0,.66);animation:vslFloat .25s ease;}
+  @keyframes vslFloat{from{opacity:0;transform:translateY(14px) scale(.95);}to{opacity:1;transform:none;}}
+  .vsl-ctl{position:absolute;top:6px;width:27px;height:27px;border:0;border-radius:50%;background:rgba(8,10,13,.8);color:#fff;display:none;align-items:center;justify-content:center;cursor:pointer;z-index:4;font-family:var(--mono);font-size:14px;line-height:1;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+  .video-frame.is-floating .vsl-ctl{display:flex;}
+  .vsl-close{right:6px;font-size:15px;}
+  .vsl-mute{right:39px;}
+  .vsl-ctl:active{transform:scale(.9);}
+  /* ── Product peek ──────────────────────────────────────── */
+  .peek-list{display:flex;flex-direction:column;gap:16px;margin-top:28px;}
+  .peek-card{border:1px solid var(--border-strong);border-radius:16px;overflow:hidden;background:var(--bg-elev);}
+  .peek-screen{padding:18px 16px;background:#080A0D;border-bottom:1px solid var(--border);}
+  .peek-copy{padding:20px 18px;}
+  .peek-step{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--accent);margin-bottom:9px;text-transform:uppercase;}
+  .peek-copy h3{font-size:17px;font-weight:800;line-height:1.25;margin-bottom:9px;}
+  .peek-copy p{font-size:14.5px;color:var(--text-dim);line-height:1.6;}
+  /* mock chrome */
+  .mock-hdr{display:flex;align-items:center;gap:9px;margin-bottom:12px;}
+  .mock-nb{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);background:var(--bg-elev);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--text-dim);flex:0 0 auto;}
+  .mock-tt{font-size:13px;font-weight:700;}
+  .mock-fld{background:var(--bg-elev-2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;}
+  .mock-ph{font-family:var(--mono);font-size:11px;color:var(--text-faint);}
+  .mock-wb{background:#fff;color:#080A0D;border-radius:5px;padding:5px 10px;font-size:11px;font-weight:700;white-space:nowrap;}
+  .mock-rows{display:flex;flex-direction:column;gap:5px;}
+  .mock-row2{display:flex;align-items:center;gap:10px;background:var(--bg-elev-2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;}
+  .mock-row2.hi{border-color:var(--accent-line);background:var(--accent-soft);}
+  .mock-rn{width:22px;height:22px;border-radius:6px;background:var(--bg);border:1px solid var(--border);color:var(--text-dim);font-family:var(--mono);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .mock-row2.hi .mock-rn{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent);}
+  .mock-rl{font-size:12.5px;font-weight:600;flex:1;}
+  .mock-rv2{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);}
+  .mock-row2.hi .mock-rv2{color:var(--accent);}
+  /* avant/après table */
+  .mock-aa{border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .mock-aa-h{display:grid;grid-template-columns:.8fr 1fr 1fr;background:var(--bg-elev-2);border-bottom:1px solid var(--border);}
+  .mock-aa-h div{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);padding:7px 10px;text-align:center;}
+  .mock-aa-h div:nth-child(2){border-right:1px solid var(--border);}
+  .mock-aa-r{display:grid;grid-template-columns:.8fr 1fr 1fr;border-bottom:1px solid var(--border);}
+  .mock-aa-r:last-child{border-bottom:0;}
+  .mock-aa-r .ak{font-size:11px;color:var(--text-dim);padding:9px 10px;border-right:1px solid var(--border);}
+  .mock-aa-r .av{font-family:var(--mono);font-size:12px;font-weight:700;padding:9px 10px;text-align:center;color:var(--text-dim);}
+  .mock-aa-r .av:nth-child(2){border-right:1px solid var(--border);}
+  .mock-aa-r .av.pos{color:var(--accent);}
+  .mock-aa-r .av.neg{color:#ff6b6b;}
+  .mock-res{display:flex;align-items:center;justify-content:space-between;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:8px;padding:11px 14px;margin-top:8px;}
+  .mock-rk{font-size:12px;color:var(--accent);font-weight:600;}
+  .mock-rvv{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--accent);}
+  /* capital circle */
+  .mock-cw{display:flex;flex-direction:column;align-items:center;padding:14px 0 6px;}
+  .mock-circ{position:relative;width:110px;height:110px;}
+  .mock-circ svg{position:absolute;inset:0;transform:rotate(-90deg);}
+  .mock-ci{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .mock-pct{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--accent);line-height:1;}
+  .mock-pct sup{font-size:12px;}
+  .mock-cs{text-align:center;margin-top:14px;}
+  .mock-cs1{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);line-height:1.7;}
+  .mock-cs2{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--text);margin-top:5px;}
+  .mock-cs2 b{color:var(--accent);}
+  @media (max-width:380px){h1{font-size:30px;} h2{font-size:22px;}}
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="row">
+      <span class="brand"><img class="brand-mark" src="napkn-icon.svg" alt="" onerror="this.style.display='none'"><span class="brand-word">napkn<sup class="brand-tm">TM</sup></span></span>
+      <a href="#reserver" class="topcta">Réserver</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+      <span class="eyebrow reveal in"><span class="dot"></span>Démonstration privée · Courtiers multilogement</span>
+      <h1 class="reveal in d1">Ferme les clients multilogement que tu <span class="hl">perds aujourd'hui</span>.</h1>
+      <p class="sub reveal in d2">NAPKN transforme une fiche Centris en analyse complète — <b>revenu net normalisé, potentiel d'optimisation, financement et refinancement</b> — en moins de cinq minutes. Ton client voit enfin le plan, pas juste le prix. Tu fermes la transaction.</p>
+      <a href="#reserver" class="btn reveal in d3">Réserver ma démonstration <span class="arrow">→</span></a>
+      <p class="micro reveal in d3">Une démonstration de 30 minutes · Réservée aux courtiers que nous contactons</p>
+      <div class="assure reveal in d3">
+        <span><span class="ck">✓</span> Démo sur ton propre immeuble</span>
+        <span><span class="ck">✓</span> Aucune carte requise</span>
+        <span><span class="ck">✓</span> Sans engagement</span>
+      </div>
+    </header>
+
+    <!-- VSL -->
+    <p class="vsl-label reveal">Regarde NAPKN analyser un immeuble réel · 3 min</p>
+    <div class="vsl-anchor reveal">
+      <div class="video-frame">
+        <div class="ratio">
+
+          <!-- ▼▼▼ COLLE TA VIDÉO ICI ▼▼▼
+               Pour la vidéo flottante (le son continue + le mini-lecteur suit le défilement),
+               utilise un fichier .mp4 hébergé dans une balise <video> (recommandé) :
+
+                 <video class="vsl-video" controls playsinline preload="metadata"
+                        poster="poster.jpg" src="https://.../demo.mp4"></video>
+
+               Remplace TOUT le bloc .video-placeholder ci-dessous par cette balise <video>.
+               Le comportement flottant + les boutons « son » et « fermer » s'activent
+               automatiquement dès qu'une <video> est présente et lancée.
+               (Un embed YouTube/Vimeo joue aussi, mais le bouton « couper le son » du
+                mini-lecteur exige l'API du fournisseur — le .mp4 fonctionne sans config.)
+               ▲▲▲ ---------------------------- ▲▲▲ -->
+
+          <!-- ⚠ VIDÉO TEMPORAIRE DE DÉMONSTRATION — remplace le src ci-dessous par ta vraie vidéo .mp4 -->
+          <video class="vsl-video" controls playsinline preload="metadata"
+                 src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"></video>
+        </div>
+        <button class="vsl-ctl vsl-mute" type="button" title="Couper le son" aria-label="Couper le son">
+          <svg class="ic-on" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M17 8.5a4.5 4.5 0 010 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <svg class="ic-off" width="15" height="15" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 9l6 6M22 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button class="vsl-ctl vsl-close" type="button" title="Fermer" aria-label="Fermer">✕</button>
+      </div>
+    </div>
+
+    <!-- TRUST BAR -->
+    <div class="trustbar reveal">
+      <div class="ti"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 19l-4.8 2.5.9-5.4L4.2 7.7l5.4-.8L12 2z" fill="currentColor"/></svg></span><div><div class="tt">Expertise MREX / CMFE</div><div class="ts">au cœur de la méthode</div></div></div>
+      <div class="ti"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><div><div class="tt">Expertise multilogement réelle</div><div class="ts">pas un outil théorique</div></div></div>
+      <div class="ti"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.4-3 7.4-7 9-4-1.6-7-4.6-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="tt">Garantie de remboursement</div><div class="ts">Le risque est de notre côté</div></div></div>
+      <div class="ti"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="tt">Bâti pour le Québec</div><div class="ts">Centris · prêteurs locaux</div></div></div>
+    </div>
+
+    <!-- PROBLEM -->
+    <section class="reveal">
+      <div class="tag">Le problème</div>
+      <h2>Quand ton client ne voit pas le plan, <span class="hl">il ne voit que le prix</span>.</h2>
+      <p class="body">« Je vais réfléchir. » L'acheteur reporte. Il évalue l'immeuble sur son prix demandé, jamais sur ce qu'il pourrait produire une fois optimisé. Plusieurs offres soumises, aucun achat finalisé.</p>
+      <p class="body">Pendant ce temps, tu bâtis l'analyse à la main — <span class="num">60 à 90 minutes</span> par immeuble — pour une transaction qui ne fermera peut-être jamais. Du temps perdu, et une commission de <span class="num">25 000 $</span> qui s'en va chez le courtier d'à côté.</p>
+      <div class="stats">
+        <div class="stat"><div class="v">60–90 min</div><div class="l">par analyse manuelle, par immeuble</div></div>
+        <div class="stat"><div class="v">25 000 $+</div><div class="l">de commission perdue par client qui repart</div></div>
+      </div>
+    </section>
+
+    <!-- MECHANISM -->
+    <section class="reveal">
+      <div class="tag">Comment ça fonctionne</div>
+      <h2>Trois étapes. <span class="hl">Moins de cinq minutes.</span></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <div><h3>Colle la fiche Centris</h3><p>Une adresse ou un lien Centris. Rien d'autre à saisir à la main.</p></div>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <div>
+            <h3>NAPKN bâtit l'analyse complète</h3>
+            <p>En moins de cinq minutes, devant ton client.</p>
+            <span class="out">Revenu net normalisé · optimisation des loyers · coûts de rénovation · financement conventionnel · refinancement · capital récupérable</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <div><h3>Tu remets un PDF à ton image</h3><p>Prêt à présenter, avec tes liens de réservation : consultation avec un expert NAPKN, courtier hypothécaire partenaire, estimateurs. Ton client voit le plan complet — pas seulement le prix.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT PEEK -->
+    <section class="reveal">
+      <div class="tag">Vois l'outil en action</div>
+      <h2>Pas une promesse. <span class="hl">Un plan chiffré, généré en direct.</span></h2>
+      <p class="body">Voici exactement ce que NAPKN produit pendant ta démonstration — sur un de tes propres immeubles, en moins de cinq minutes.</p>
+      <div class="peek-list">
+
+        <div class="peek-card">
+          <div class="peek-screen">
+            <div class="mock-hdr">
+              <div class="mock-nb">0</div>
+              <span class="mock-tt">Informations générales</span>
+            </div>
+            <div class="mock-fld">
+              <span class="mock-ph">🔗 Coller le lien de l'annonce Centris</span>
+              <span class="mock-wb">Analyser</span>
+            </div>
+            <div class="mock-fld">
+              <span class="mock-ph">📍 Ex : 4087 Rue Saint-Hubert, Montréal</span>
+            </div>
+          </div>
+          <div class="peek-copy">
+            <div class="peek-step">01 · Entrée</div>
+            <h3>Une adresse. C'est tout ce que tu colles.</h3>
+            <p>NAPKN lit la fiche et remplit automatiquement les revenus, le profil de financement et les hypothèses de départ. Ton client est à côté de toi. L'analyse se construit toute seule.</p>
+          </div>
+        </div>
+
+        <div class="peek-card">
+          <div class="peek-screen">
+            <div class="mock-rows">
+              <div class="mock-row2"><div class="mock-rn">1</div><span class="mock-rl">Potentiel post-optimisation</span><span class="mock-rv2">RNN →</span></div>
+              <div class="mock-row2"><div class="mock-rn">2</div><span class="mock-rl">Coûts d'actualisation</span><span class="mock-rv2">rénos →</span></div>
+              <div class="mock-row2"><div class="mock-rn">3</div><span class="mock-rl">Dépenses d'acquisition</span><span class="mock-rv2">notaire →</span></div>
+              <div class="mock-row2"><div class="mock-rn">4</div><span class="mock-rl">Financement optimisation</span><span class="mock-rv2">LTV →</span></div>
+              <div class="mock-row2 hi"><div class="mock-rn">5</div><span class="mock-rl">Refinancement SCHL</span><span class="mock-rv2">RCD 1,3 →</span></div>
+              <div class="mock-row2 hi"><div class="mock-rn">6</div><span class="mock-rl">Résumé du projet</span><span class="mock-rv2">capital ↑ →</span></div>
+            </div>
+          </div>
+          <div class="peek-copy">
+            <div class="peek-step">02 · Analyse</div>
+            <h3>Six sections. Zéro calcul à la main.</h3>
+            <p>De l'optimisation des loyers au refinancement SCHL — tout le plan est là, d'un seul coup. Ton client comprend enfin ce que lui rapportera l'immeuble une fois optimisé.</p>
+          </div>
+        </div>
+
+        <div class="peek-card">
+          <div class="peek-screen">
+            <div class="mock-aa">
+              <div class="mock-aa-h">
+                <div></div>
+                <div>AVANT</div>
+                <div>APRÈS</div>
+              </div>
+              <div class="mock-aa-r"><div class="ak">Logements</div><div class="av">6</div><div class="av pos">8</div></div>
+              <div class="mock-aa-r"><div class="ak">Revenus bruts</div><div class="av">52 800 $</div><div class="av pos">79 200 $</div></div>
+              <div class="mock-aa-r"><div class="ak">RNN</div><div class="av neg">−5 700 $</div><div class="av pos">+38 100 $</div></div>
+            </div>
+            <div class="mock-res">
+              <span class="mock-rk">Revenu net normalisé post-optimisation</span>
+              <span class="mock-rvv">+38 100 $</span>
+            </div>
+          </div>
+          <div class="peek-copy">
+            <div class="peek-step">03 · Comparaison</div>
+            <h3>Ton client voit ce que vaut l'immeuble — pas juste ce qu'il coûte.</h3>
+            <p>La colonne de gauche, c'est la situation actuelle. La colonne de droite, c'est le plan optimisé. Le revenu net normalisé passe de négatif à positif — devant lui, en temps réel.</p>
+          </div>
+        </div>
+
+        <div class="peek-card">
+          <div class="peek-screen">
+            <div class="mock-cw">
+              <div class="mock-circ">
+                <svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="55" cy="55" r="47" stroke="rgba(255,255,255,0.06)" stroke-width="7"/>
+                  <circle cx="55" cy="55" r="47" stroke="#00C97A" stroke-width="7"
+                          stroke-dasharray="295.31" stroke-dashoffset="53.16"
+                          stroke-linecap="round"/>
+                </svg>
+                <div class="mock-ci">
+                  <span class="mock-pct">82<sup>%</sup></span>
+                </div>
+              </div>
+              <div class="mock-cs">
+                <div class="mock-cs1">de votre apport personnel<br>en capital récupéré</div>
+                <div class="mock-cs2">en <b>18 mois</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="peek-copy">
+            <div class="peek-step">04 · Le chiffre qui ferme le deal</div>
+            <h3>Ton client voit qu'il récupère sa mise. Et il revient avec toi l'année suivante.</h3>
+            <p>C'est le chiffre que personne ne lui avait jamais montré. NAPKN modélise combien de son apport il récupère après refinancement SCHL — et en combien de mois. Quand il voit ça, il n'a plus besoin de réfléchir.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REINVESTMENT LOOP -->
+    <section class="reveal">
+      <div class="tag">Ce que ça crée</div>
+      <h2>Tu ne fermes pas une transaction. <span class="hl">Tu gagnes un investisseur qui revient.</span></h2>
+      <p class="body">NAPKN montre à ton acheteur le plan au complet : optimiser les loyers, refinancer une fois les travaux faits, et récupérer sa mise de fonds.</p>
+      <p class="body">Ce capital récupéré, il le réinvestit — <b>avec toi, l'année suivante</b>. Un client qui achète un premier plex devient un client qui en achète un deuxième, puis un troisième. Tu arrêtes de vendre des transactions. Tu bâtis un portefeuille de clients récurrents.</p>
+      <div class="flow">
+        <span class="chip">Finances</span><span class="ar">→</span>
+        <span class="chip">Prêteur conventionnel</span><span class="ar">→</span>
+        <span class="chip">Optimisation</span><span class="ar">→</span>
+        <span class="chip">Refinancement</span><span class="ar">→</span>
+        <span class="chip">Capital récupéré</span><span class="ar">→</span>
+        <span class="chip accent">Réinvestit avec toi</span>
+      </div>
+    </section>
+
+    <!-- ROI -->
+    <section class="reveal">
+      <div class="tag">Le calcul</div>
+      <h2>Un seul client fermé rembourse NAPKN <span class="hl">cinq fois</span>.</h2>
+      <p class="body">Tu n'as pas besoin de dix clients de plus. Tu en as besoin d'un. Et avec le bon plan, ce client-là revient.</p>
+      <div class="roi">
+        <div class="line"><span class="k">Coût de NAPKN</span><span class="v neg">5 000 $ / an</span></div>
+        <div class="line"><span class="k">Une transaction multilogement fermée</span><span class="v pos">+ 25 000 $</span></div>
+        <div class="line final"><span class="k">Retour minimum sur un seul client</span><span class="v pos">5×</span></div>
+      </div>
+      <p class="body" style="margin-top:18px;">Tu paies déjà des frais mensuels en logiciels, sans retour garanti. NAPKN coûte 5 000 $ par année — et te les rembourse dès le premier client.</p>
+    </section>
+
+    <!-- CREDIBILITY -->
+    <section class="reveal">
+      <div class="tag">Pourquoi NAPKN</div>
+      <h2>Bâti pour le multilogement québécois — <span class="hl">par des gens qui y investissent</span>.</h2>
+      <p class="body">NAPKN n'est pas un outil générique. Sa méthodologie vient de la pratique réelle du marché québécois et de l'enseignement MREX / CMFE : revenu net normalisé, prêteurs conventionnels, scénarios de refinancement post-optimisation, capital récupérable.</p>
+      <p class="body">Chaque démonstration se fait sur un de tes propres immeubles, avec un expert qui investit lui-même dans le multilogement. Tu ne juges pas une promesse — tu juges des chiffres sur ton deal.</p>
+    </section>
+
+    <!-- TESTIMONIAL — gabarit à remplir avec une VRAIE citation client -->
+    <section class="reveal" style="padding-top:0;">
+      <div class="tag">Ce qu'un courtier en dit</div>
+      <div class="quote">
+        <span class="stars" aria-label="5 sur 5">★★★★★</span>
+        <p>«&nbsp;[CITATION RÉELLE DU CLIENT — ex. : En démo, NAPKN a sorti l'analyse complète d'un de mes immeubles en cinq minutes. J'ai présenté le plan à mon acheteur, il a signé la semaine d'après.]&nbsp;»</p>
+        <div class="by">
+          <div class="av">★</div>
+          <div>
+            <div class="nm">[Prénom Nom]</div>
+            <div class="rl">Courtier multilogement · [Courtage]</div>
+          </div>
+        </div>
+      </div>
+      <div class="todo">⚠ À REMPLACER par la citation réelle de ton client payant (nom + courtage), idéalement avec sa permission écrite. Sinon, retire cette section au complet. Ne jamais publier une review inventée.</div>
+    </section>
+
+    <!-- GUARANTEE (before price) -->
+    <section class="reveal" style="padding-top:0;">
+      <div class="guarantee">
+        <div class="seal">Garantie sans risque</div>
+        <h3>Si tu ne closes pas au moins un client de plus cette année grâce à NAPKN, on te rembourse à 100 %.</h3>
+        <p>Une commission d'environ <b>25 000 $</b> sur un six-logements, contre un investissement de <b>5 000 $</b>. Le risque est de notre côté, pas du tien.</p>
+      </div>
+    </section>
+
+    <!-- EXCLUSIVITY -->
+    <section class="excl reveal">
+      <span class="pill"><span class="dot"></span>Places limitées</span>
+      <h2>On intègre seulement quelques courtiers par mois.</h2>
+      <p class="body">Chaque courtier est accompagné personnellement à l'intégration — et les premiers reçoivent des bonus réservés qu'on dévoile à la démonstration. C'est pourquoi les places sont restreintes. Cette rencontre est réservée aux courtiers multilogement sérieux qui veulent prendre les devants <b>avant leurs concurrents</b>.</p>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="reserver" class="reveal">
+      <div class="tag">Ta démonstration privée</div>
+      <h2>Réserve ta <span class="hl">démonstration privée</span>.</h2>
+      <p class="body">Tu repars avec une analyse réelle d'un de tes propres immeubles. Choisis ton moment ci-dessous.</p>
+      <div class="assure" style="justify-content:flex-start;">
+        <span><span class="ck">✓</span> Sans engagement</span>
+        <span><span class="ck">✓</span> Aucune carte requise</span>
+        <span><span class="ck">✓</span> 30 minutes, sur ton immeuble</span>
+      </div>
+      <div class="cal-shell">
+        <div class="calendly-inline-widget"
+             data-url="https://calendly.com/felix-blanc-immobilier/confirmation-d-hypothese-d-optimisation-clone?hide_gdpr_banner=1&background_color=0e1318&text_color=f3f5f6&primary_color=00c97a"
+             data-resize="true"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="reveal" style="padding-top:10px;">
+      <div class="tag">Avant de réserver</div>
+      <h2>Les questions qu'on nous pose.</h2>
+
+      <details>
+        <summary>Je fais déjà mes analyses moi-même. <span class="plus">+</span></summary>
+        <div class="ans">Oui — en <b>60 à 90 minutes</b> par immeuble. NAPKN le fait en moins de cinq, avec un PDF prêt à présenter. La vraie question, c'est combien de clients tu perds pendant que tu montes l'analyse à la main.</div>
+      </details>
+
+      <details>
+        <summary>Mes clients n'ont pas le budget pour de gros projets. <span class="plus">+</span></summary>
+        <div class="ans">C'est exactement le malentendu que NAPKN dissipe. Le plan montre comment refinancer après l'optimisation et <b>récupérer la mise de fonds</b> — le capital revient pour financer la suite. Ton client arrête de voir une dépense et voit un cycle.</div>
+      </details>
+
+      <details>
+        <summary>Est-ce précis ? <span class="plus">+</span></summary>
+        <div class="ans">NAPKN est bâti spécifiquement pour le multilogement québécois, et sa méthodologie s'appuie sur l'enseignement MREX / CMFE. La démonstration se fait sur <b>un de tes propres immeubles</b> : tu juges la justesse par toi-même, en direct.</div>
+      </details>
+
+      <details>
+        <summary>Combien ça coûte ? <span class="plus">+</span></summary>
+        <div class="ans"><b>5 000 $ par année</b>, avec la garantie de remboursement. Un seul client fermé te le rembourse cinq fois. On te présente tous les détails et les bonus à la démonstration.</div>
+      </details>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="reveal" style="text-align:center;padding-top:0;">
+      <h2 style="margin-bottom:20px;">Prends les devants.</h2>
+      <a href="#reserver" class="btn">Réserver ma démonstration <span class="arrow">→</span></a>
+      <p class="micro">Places limitées chaque mois</p>
+      <div class="assure">
+        <span><span class="ck">✓</span> 100 % remboursé si tu ne closes pas un client</span>
+        <span><span class="ck">✓</span> Sans engagement</span>
+      </div>
+    </section>
+
+    <footer>
+      <span class="brand brand--foot"><img class="brand-mark" src="napkn-icon.svg" alt="" onerror="this.style.display='none'"><span class="brand-word">napkn<sup class="brand-tm">TM</sup></span></span>
+      <p>L'analyse multilogement, en cinq minutes.<br>napkn.tech</p>
+    </footer>
+
+  </div>
+
+  <div class="sticky-cta">
+    <div class="inner"><a href="#reserver">Réserver ma démo <span style="font-family:var(--mono)">→</span></a></div>
+  </div>
+
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <script>
+    (function(){
+      // Reveal on scroll
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+      },{threshold:.12});
+      document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ io.observe(el); });
+
+      var sticky  = document.querySelector('.sticky-cta');
+      var booking = document.getElementById('reserver');
+      var anchor  = document.querySelector('.vsl-anchor');
+      var frame   = anchor && anchor.querySelector('.video-frame');
+      if(sticky) sticky.style.transition = 'transform .3s ease';
+
+      var activated=false, anchorVisible=true, inBooking=false, dismissed=false;
+      function vid(){ return frame ? frame.querySelector('video') : null; }
+      function apply(){
+        if(!frame) return;
+        var show = activated && !anchorVisible && !inBooking && !dismissed && !!vid();
+        frame.classList.toggle('is-floating', show);
+      }
+
+      // Booking section in view -> hide BOTH the bottom CTA and the floating video
+      if(booking){
+        new IntersectionObserver(function(es){
+          es.forEach(function(e){ inBooking = e.isIntersecting; });
+          if(sticky) sticky.style.transform = inBooking ? 'translateY(120%)' : 'none';
+          apply();
+        },{threshold:.15}).observe(booking);
+      }
+
+      // Original video scrolled out of view -> float it (only once playing)
+      if(anchor){
+        new IntersectionObserver(function(es){
+          es.forEach(function(e){ anchorVisible = e.isIntersecting; });
+          apply();
+        },{threshold:.15}).observe(anchor);
+      }
+
+      // Play detection + mini-player controls (active as soon as a <video> is present)
+      if(frame){
+        var v = vid();
+        if(v){
+          v.addEventListener('play',  function(){ activated=true;  dismissed=false; apply(); });
+          v.addEventListener('ended', function(){ activated=false; apply(); });
+        }
+        var muteBtn  = frame.querySelector('.vsl-mute');
+        var closeBtn = frame.querySelector('.vsl-close');
+        if(muteBtn) muteBtn.addEventListener('click', function(){
+          var x=vid(); if(!x) return;
+          x.muted = !x.muted;
+          muteBtn.querySelector('.ic-on').style.display  = x.muted ? 'none'  : 'block';
+          muteBtn.querySelector('.ic-off').style.display = x.muted ? 'block' : 'none';
+        });
+        if(closeBtn) closeBtn.addEventListener('click', function(){
+          dismissed=true; var x=vid(); if(x) x.pause(); apply();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
