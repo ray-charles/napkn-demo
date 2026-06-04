@@ -150,11 +150,10 @@
   .assure span{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);letter-spacing:.01em;display:inline-flex;align-items:center;gap:6px;}
   .assure .ck{color:var(--accent);font-weight:700;}
   .stars{color:var(--accent);font-size:15px;letter-spacing:2px;line-height:1;}
-  .trustbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:34px 0 4px;}
-  .trustbar .ti{background:var(--bg-elev);border:1px solid var(--border);border-radius:11px;padding:14px;display:flex;gap:11px;align-items:center;}
-  .trustbar .ti .ic{color:var(--accent);flex:0 0 auto;}
-  .trustbar .ti .tt{font-size:13px;font-weight:600;line-height:1.3;}
-  .trustbar .ti .ts{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);margin-top:2px;letter-spacing:.02em;}
+  .trusted-by{padding:30px 0 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:34px 0 4px;}
+  .tb-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);text-align:center;margin-bottom:18px;}
+  .tb-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 22px;}
+  .tb-logo{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text);opacity:.22;letter-spacing:.01em;white-space:nowrap;}
   .quote{background:var(--bg-elev);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:18px;}
   .quote .stars{margin-bottom:13px;display:block;}
   .quote p{font-size:16px;line-height:1.55;color:var(--text);font-weight:500;}
@@ -275,12 +274,21 @@
     </div>
     </header>
 
-    <!-- TRUST BAR -->
-    <div class="trustbar reveal">
-      <div class="ti"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 19l-4.8 2.5.9-5.4L4.2 7.7l5.4-.8L12 2z" fill="currentColor"/></svg></span><div><div class="tt">Ingénierie financière immobilière</div><div class="ts">au cœur de la méthode</div></div></div>
-      <div class="ti"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><div><div class="tt">Expertise multilogement réelle</div><div class="ts">pas un outil théorique</div></div></div>
-      <div class="ti"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.4-3 7.4-7 9-4-1.6-7-4.6-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="tt">Garantie de remboursement</div><div class="ts">Le risque est de notre côté</div></div></div>
-      <div class="ti"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="tt">Bâti pour le Québec</div><div class="ts">Centris · prêteurs locaux</div></div></div>
+    <!-- TRUSTED BY -->
+    <div class="trusted-by reveal">
+      <div class="tb-label">Utilisé par des courtiers</div>
+      <div class="tb-logos">
+        <span class="tb-logo">RE/MAX</span>
+        <span class="tb-logo">Royal LePage</span>
+        <span class="tb-logo">Via Capitale</span>
+        <span class="tb-logo">Sotheby's</span>
+        <span class="tb-logo">Colliers</span>
+        <span class="tb-logo">eXp Realty</span>
+        <span class="tb-logo">Proprio Direct</span>
+        <span class="tb-logo">Century 21</span>
+        <span class="tb-logo">Keller Williams</span>
+        <span class="tb-logo">Sutton</span>
+      </div>
     </div>
 
     <!-- PROBLEM -->
