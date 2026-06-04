@@ -150,10 +150,12 @@
   .assure span{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);letter-spacing:.01em;display:inline-flex;align-items:center;gap:6px;}
   .assure .ck{color:var(--accent);font-weight:700;}
   .stars{color:var(--accent);font-size:15px;letter-spacing:2px;line-height:1;}
-  .trusted-by{padding:30px 0 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:34px 0 4px;}
+  .trusted-by{margin:34px 0 4px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0;}
   .tb-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);text-align:center;margin-bottom:18px;}
-  .tb-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 22px;}
-  .tb-logo{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text);opacity:.22;letter-spacing:.01em;white-space:nowrap;}
+  .tb-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%);}
+  .tb-track{display:flex;gap:52px;align-items:center;width:max-content;animation:tbMarquee 32s linear infinite;}
+  .tb-track img{height:24px;width:auto;object-fit:contain;max-width:110px;filter:brightness(0) invert(1) opacity(.25);}
+  @keyframes tbMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .quote{background:var(--bg-elev);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:18px;}
   .quote .stars{margin-bottom:13px;display:block;}
   .quote p{font-size:16px;line-height:1.55;color:var(--text);font-weight:500;}
@@ -277,17 +279,25 @@
     <!-- TRUSTED BY -->
     <div class="trusted-by reveal">
       <div class="tb-label">Utilisé par des courtiers</div>
-      <div class="tb-logos">
-        <span class="tb-logo">RE/MAX</span>
-        <span class="tb-logo">Royal LePage</span>
-        <span class="tb-logo">Via Capitale</span>
-        <span class="tb-logo">Sotheby's</span>
-        <span class="tb-logo">Colliers</span>
-        <span class="tb-logo">eXp Realty</span>
-        <span class="tb-logo">Proprio Direct</span>
-        <span class="tb-logo">Century 21</span>
-        <span class="tb-logo">Keller Williams</span>
-        <span class="tb-logo">Sutton</span>
+      <div class="tb-track-wrap">
+        <div class="tb-track">
+          <img src="logos/remax.svg" alt="RE/MAX">
+          <img src="logos/royallepage.svg" alt="Royal LePage">
+          <img src="logos/century21.svg" alt="Century 21">
+          <img src="logos/colliers.svg" alt="Colliers">
+          <img src="logos/kw.svg" alt="Keller Williams">
+          <img src="logos/propriodirect.svg" alt="Proprio Direct">
+          <img src="logos/sutton.svg" alt="Sutton">
+          <img src="logos/exprealty.png" alt="eXp Realty">
+          <img src="logos/remax.svg" alt="RE/MAX">
+          <img src="logos/royallepage.svg" alt="Royal LePage">
+          <img src="logos/century21.svg" alt="Century 21">
+          <img src="logos/colliers.svg" alt="Colliers">
+          <img src="logos/kw.svg" alt="Keller Williams">
+          <img src="logos/propriodirect.svg" alt="Proprio Direct">
+          <img src="logos/sutton.svg" alt="Sutton">
+          <img src="logos/exprealty.png" alt="eXp Realty">
+        </div>
       </div>
     </div>
 
