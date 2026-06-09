@@ -15,10 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://calendly.com">
-<link rel="preconnect" href="https://assets.calendly.com">
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js"></script>
+<link rel="preconnect" href="https://app.cal.com">
 
 <style>
   :root{
@@ -130,7 +127,7 @@
 
   #reserver{scroll-margin-top:64px;}
   .cal-shell{margin-top:22px;border:1px solid var(--border-strong);border-radius:16px;overflow:hidden;background:var(--bg-elev);}
-  .calendly-inline-widget{min-width:300px;height:550px;}
+  .cal-inline{min-width:300px;height:550px;overflow:scroll;}
 
   details{border:1px solid var(--border);border-radius:12px;background:var(--bg-elev);margin-bottom:12px;overflow:hidden;}
   details summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:600;font-size:15.5px;display:flex;justify-content:space-between;align-items:center;gap:14px;}
@@ -252,8 +249,7 @@
       <h1 class="reveal in d1"><span class="hl">Arrête de perdre des clients</span> parce qu'ils ne voient pas le potentiel.</h1>
       <p class="sub reveal in d2" style="color:var(--text);">65 % des transactions en multilogement tombent à l'eau à cause d'une absence de stratégie financière.</p>
       <div class="cal-shell" style="margin-top:32px;">
-        <div class="calendly-inline-widget"
-             data-url="https://calendly.com/felix-blanc-immobilier/visite-guidee-napkn?hide_gdpr_banner=1&hide_event_type_details=1&background_color=0e1318&text_color=f3f5f6&primary_color=00c97a"></div>
+        <div id="cal-hero" class="cal-inline"></div>
       </div>
     </header>
 
@@ -402,8 +398,7 @@
         <span><span class="ck">✓</span> 30 minutes</span>
       </div>
       <div class="cal-shell">
-        <div class="calendly-inline-widget"
-             data-url="https://calendly.com/felix-blanc-immobilier/visite-guidee-napkn?hide_gdpr_banner=1&hide_event_type_details=1&background_color=0e1318&text_color=f3f5f6&primary_color=00c97a"></div>
+        <div id="cal-rdv" class="cal-inline"></div>
       </div>
     </section>
 
@@ -489,5 +484,22 @@
       }
     })();
   </script>
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "demo-napkn", {origin:"https://app.cal.com"});
+  Cal.ns["demo-napkn"]("inline", {
+    elementOrSelector: "#cal-hero",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"},
+    calLink: "napkn/demo-napkn",
+  });
+  Cal("init", "demo-napkn-2", {origin:"https://app.cal.com"});
+  Cal.ns["demo-napkn-2"]("inline", {
+    elementOrSelector: "#cal-rdv",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"},
+    calLink: "napkn/demo-napkn",
+  });
+  Cal.ns["demo-napkn"]("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"month_view"});
+  Cal.ns["demo-napkn-2"]("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"month_view"});
+</script>
 </body>
 </html>
